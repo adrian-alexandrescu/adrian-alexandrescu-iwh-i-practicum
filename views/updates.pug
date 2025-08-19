@@ -1,0 +1,21 @@
+//- views/updates.pug
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    a(href="/") Return to the homepage
+    h1= title
+    form(method="post", action="/update-cobj")
+      label(for="name") Name
+      input#name(type="text", name="name", required)
+
+      label(for="bio") Bio
+      textarea#bio(name="bio")
+
+      label(for="favorite_thing") Favorite Thing
+      input#favorite_thing(type="text", name="favorite_thing")
+
+      button(type="submit") Create Record
