@@ -17,14 +17,14 @@ html
           tr
             th ID
             th Name
-            th Bio
-            th Favorite Thing
+            th Size
+            th Type
             th Created At
         tbody
           each r in rows
             tr
               td= r.id
               td= r.properties?.name
-              td= r.properties?.bio
-              td= r.properties?.favorite_thing
+              td= r.properties?.size
+              td= r.properties?.type
               td= r.createdAt
