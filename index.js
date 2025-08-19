@@ -8,7 +8,7 @@ const app = express();
 
 const HS_TOKEN = process.env.HS_PRIVATE_APP_TOKEN;
 const HS_OBJECT_TYPE = process.env.HS_OBJECT_TYPE; // e.g., "2-1234567" or fullyQualifiedName
-const HS_PROPERTIES = process.env.HS_PROPERTIES || 'name,bio,favorite_thing';
+const HS_PROPERTIES = process.env.HS_PROPERTIES || 'name,size,type';
 const PORT = process.env.PORT || 3000;
 
 if (!HS_TOKEN || !HS_OBJECT_TYPE) {
@@ -53,7 +53,7 @@ app.get('/update-cobj', (req, res) => {
 app.post('/update-cobj', async (req, res) => {
   try {
     // Make sure these names match your property *internal* names
-    const { name, bio, favorite_thing } = req.body;
+    const { name, size, type } = req.body;
 
     const url = `https://api.hubapi.com/crm/v3/objects/${HS_OBJECT_TYPE}`;
     await axios.post(
@@ -61,8 +61,8 @@ app.post('/update-cobj', async (req, res) => {
       {
         properties: {
           name,
-          bio,
-          favorite_thing
+          size,
+          type
         }
       },
       { headers: { Authorization: `Bearer ${HS_TOKEN}` } }
