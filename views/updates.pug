@@ -1,0 +1,21 @@
+//- views/updates.pug
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    a(href="/") Return to the homepage
+    h1= title
+    form(method="post", action="/update-cobj")
+      label(for="name") Name
+      input#name(type="text", name="name", required)
+
+      label(for="size") Size
+      input#size(type="text", name="size")
+
+      label(for="type") Type
+      input#type(type="text", name="type")
+
+      button(type="submit") Create Record

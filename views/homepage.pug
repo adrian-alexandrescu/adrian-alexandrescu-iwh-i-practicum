@@ -1,0 +1,30 @@
+//- views/homepage.pug
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    header
+      h1 Custom Object List
+      a.button(href="/update-cobj") Add to this table
+    if !rows || rows.length === 0
+      p No records yet. Click "Add to this table" to create one.
+    else
+      table
+        thead
+          tr
+            th ID
+            th Name
+            th Bio
+            th Favorite Thing
+            th Created At
+        tbody
+          each r in rows
+            tr
+              td= r.id
+              td= r.properties.name
+              td= r.properties.size
+              td= r.properties.type
+              td= r.createdAt
