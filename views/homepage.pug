@@ -1,26 +1,30 @@
+//- views/homepage.pug
 doctype html
 html
   head
     meta(charset="utf-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1")
     title= title
     link(rel="stylesheet", href="/css/style.css")
   body
     header
-      h1= title
+      h1 Custom Object List
       a.button(href="/update-cobj") Add to this table
-    if records && records.length
+    if !rows || rows.length === 0
+      p No records yet. Click "Add to this table" to create one.
+    else
       table
         thead
           tr
-            each prop in properties
-              th= prop
+            th ID
+            th Name
+            th Bio
+            th Favorite Thing
+            th Created At
         tbody
-          each r in records
+          each r in rows
             tr
-              each prop in properties
-                td= r.properties && r.properties[prop]
-    else
-      p No records yet.
-    footer
-      p Made for the Integrating With HubSpot I: Foundations Practicum.
+              td= r.id
+              td= r.properties.name
+              td= r.properties.size
+              td= r.properties.type
+              td= r.createdAt
